@@ -31,7 +31,7 @@ class ImageListView(ListView):
 
 class ImageCreateView(CreateView):
     model = Image
-    fields = ('title', 'description', 'picture')
+    fields = ('title', 'description', 'picture', 'private')
     success_url = reverse_lazy("image_list_view")
 
     def form_valid(self, form):
@@ -40,7 +40,7 @@ class ImageCreateView(CreateView):
         return super().form_valid(form)
 
 
-class SImagelUpdateView(UpdateView):
+class ImageUpdateView(UpdateView):
     model = Image
-    fields = ('title', 'description', 'picture')
+    fields = ('title', 'description', 'picture', 'private')
     success_url = "/"
