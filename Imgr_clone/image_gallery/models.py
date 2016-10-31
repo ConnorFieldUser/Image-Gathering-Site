@@ -10,6 +10,7 @@ class Image(models.Model):
     created_times = models.DateTimeField(auto_now_add=True)
     picture = models.FileField()
     private = models.BooleanField(default=False)
+    graphic = models.BooleanField(default=False)
 
     @property
     def image_url(self):
