@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Images</h1>
+
+{% for image in object_list %}
+<hr>
+
+<div class=>
+  <a href="{% url 'image_update_view' image.id %}">
+<img src="{{ MEDIA_URL }}{{ image.image_url }}" alt="Picture of {{ image.title }}"/>
+</a>
+</div>
+
+
+<div class="">
+  {{ image.title }}
+</div>
+<div class="">
+  {{ image.description }}
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

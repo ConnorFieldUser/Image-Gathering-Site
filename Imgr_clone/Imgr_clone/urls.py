@@ -25,7 +25,7 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
     url(r'^$', IndexView.as_view(), name="index_view"),
     url(r'^create_user/$', UserCreateView.as_view(), name="user_create_view"),
-    url(r'^$', ImageListView.as_view(), name="image_list_view"),
+    url(r'^images$', ImageListView.as_view(), name="image_list_view"),
     url(r'^create/$', ImageCreateView.as_view(), name="image_create_view"),
     url(r'^update/(?P<pk>\d+)/$', ImageUpdateView.as_view(), name="image_update_view"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

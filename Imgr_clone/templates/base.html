@@ -14,18 +14,18 @@
     <ul class="nav navbar-nav">
 
     <li><a href="{% url 'index_view' %}"><button type="button" class="btn btn-default navbar-btn">Home</button></a></li>
-    <li><a href="{% url 'image_list_view' %}"><button type="button" class="btn btn-default navbar-btn">Add Image</button></a></li>
+    <li><a href="{% url 'image_list_view' %}"><button type="button" class="btn btn-default navbar-btn">All Images</button></a></li>
     <li><a href="{% url 'image_create_view' %}"><button type="button" class="btn btn-default navbar-btn">Add Image</button></a></li>
-    <li><a href="{% url 'image_update_view' %}"><button type="button" class="btn btn-default navbar-btn">Add Image</button></a></li>
 
 
         {% if not request.user.is_authenticated %}
     <li><a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">Log In</button></a></li>
         {% else %}
     <li><a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">Change User</button></a></li>
+    <li><a href="{% url 'logout' %}?next={% url 'index_view' %}"><button style="background-color: #72B73A;" type="button" class="btn btn-default navbar-btn">Log out</button></a></li>
+
         {% endif %}
 
-    <li><a href="{% url 'logout' %}?next={% url 'index_view' %}"><button style="background-color: #72B73A;" type="button" class="btn btn-default navbar-btn">Log out</button></a></li>
 
   </ul>
   </div>
