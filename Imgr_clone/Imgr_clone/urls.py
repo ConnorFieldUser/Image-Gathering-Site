@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from image_gallery.views import UserCreateView, IndexView, ImageListView, ImageCreateView, ImageUpdateView
+from image_gallery.views import UserCreateView, IndexView, ImageListView, ImageCreateView, ImageUpdateView, \
+                                ImageDetailView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,4 +29,5 @@ urlpatterns = [
     url(r'^images$', ImageListView.as_view(), name="image_list_view"),
     url(r'^create/$', ImageCreateView.as_view(), name="image_create_view"),
     url(r'^update/(?P<pk>\d+)/$', ImageUpdateView.as_view(), name="image_update_view"),
+    url(r'detail/(?P<pk>\d+)/$', ImageDetailView.as_view(), name="image_detail_view")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.detail import DetailView
 
 
 from django.views.generic import ListView
@@ -31,7 +32,7 @@ class ImageListView(ListView):
 
 class ImageCreateView(CreateView):
     model = Image
-    fields = ('title', 'description', 'picture', 'private')
+    fields = ('title', 'description', 'picture', 'private', 'graphic')
     success_url = reverse_lazy("image_list_view")
 
     def form_valid(self, form):
@@ -40,7 +41,11 @@ class ImageCreateView(CreateView):
         return super().form_valid(form)
 
 
+class ImageDetailView(DetailView):
+    model = Image
+
+
 class ImageUpdateView(UpdateView):
     model = Image
-    fields = ('title', 'description', 'picture', 'private')
+    fields = ('title', 'description', 'picture', 'private', 'graphic')
     success_url = "/"
