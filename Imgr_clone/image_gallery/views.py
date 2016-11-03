@@ -50,11 +50,13 @@ class ImageUpdateView(UpdateView):
     fields = ('title', 'description', 'picture', 'private', 'graphic')
     success_url = "/"
 
+# <a href="{% url 'comment_update_view' comment.id %}">{{ comment.text }}</a>
+
 
 class CommentCreateView(CreateView):
     model = Comment
     success_url = "/"
-    fields = ('comment_text',)
+    fields = ('text',)
 
     def form_valid(self, form):
         instance = form.save(commit=False)

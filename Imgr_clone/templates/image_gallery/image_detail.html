@@ -14,20 +14,19 @@
 
 <br>
 
-comment <br> comment <br> comment <br>
+ <br>  <br>  <br>
 
 
 {% for comment in object.comment_set.all %}
   <div class="panel panel-default">
   <div class="panel-heading">{{ comment.user }}</div>
     <div class="panel-body">
-    <p style="color:blue;">{{ comment.text }}</p>
-<a href="{% url 'comment_update_view' comment.id %}">{{ comment.text }}</a>
+    <p>{{ comment.text }}</p>
   </div>
   </div>
 {% endfor %}
 
 
-<a href="#">Add comment</a>
+<a href="{% url 'comment_create_view' object.id %}">Add comment</a>
 
 {% endblock %}
