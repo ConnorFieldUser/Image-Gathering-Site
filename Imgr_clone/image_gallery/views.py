@@ -11,7 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 
-from image_gallery.models import Image
+from image_gallery.models import Image, Comment
 
 # Create your views here.
 
@@ -49,3 +49,15 @@ class ImageUpdateView(UpdateView):
     model = Image
     fields = ('title', 'description', 'picture', 'private', 'graphic')
     success_url = "/"
+
+
+class CommentCreateView(CreateView):
+    model = Comment
+    success_url = "/"
+    fields = ('comment_text',)
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        instance.image = Image.objects.get(id=self.kwargs['pk'])
+        return super().form_valid(form)

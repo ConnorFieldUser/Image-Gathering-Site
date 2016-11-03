@@ -5,12 +5,14 @@
 {% for image in object_list %}
 <hr>
 
-<div class=>
-  <a href="{% url 'image_detail_view' image.id %}">
-<img src="{{ MEDIA_URL }}{{ image.image_url }}" alt="Picture of {{ image.title }}"/>
-</a>
-</div>
 
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="{% url 'image_detail_view' image.id %}" class="thumbnail">
+      <img src="{{ MEDIA_URL }}{{ image.image_url }}" alt="Picture of {{ image.title }}"/>
+    </a>
+  </div>
+</div>
 
   <a href="{% url 'image_update_view' image.id %}">Update</a>
 

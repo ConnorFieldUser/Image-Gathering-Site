@@ -12,6 +12,22 @@
 
 <h4>{{ image.description }}</h4>
 
+<br>
 
+comment <br> comment <br> comment <br>
+
+
+{% for comment in object.comment_set.all %}
+  <div class="panel panel-default">
+  <div class="panel-heading">{{ comment.user }}</div>
+    <div class="panel-body">
+    <p style="color:blue;">{{ comment.text }}</p>
+<a href="{% url 'comment_update_view' comment.id %}">{{ comment.text }}</a>
+  </div>
+  </div>
+{% endfor %}
+
+
+<a href="#">Add comment</a>
 
 {% endblock %}
