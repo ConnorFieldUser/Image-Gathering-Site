@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Garbage Dump</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container">
+
+
+    <nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul class="nav navbar-nav">
+
+    <li><a href="{% url 'index_view' %}"><button type="button" class="btn btn-default navbar-btn">Home</button></a></li>
+    <li><a href="{% url 'image_list_view' %}"><button type="button" class="btn btn-default navbar-btn">All Images</button></a></li>
+    <li><a href="{% url 'image_create_view' %}"><button type="button" class="btn btn-default navbar-btn">Add Image</button></a></li>
+
+
+        {% if not request.user.is_authenticated %}
+    <li><a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">Log In</button></a></li>
+        {% else %}
+    <li><a href="{% url 'login' %}"><button type="button" class="btn btn-default navbar-btn">Change User</button></a></li>
+    <li><a href="{% url 'logout' %}?next={% url 'index_view' %}"><button style="background-color: #72B73A;" type="button" class="btn btn-default navbar-btn">Log out</button></a></li>
+
+        {% endif %}
+
+
+  </ul>
+  </div>
+</nav>
+
+
+{% if not request.user.is_authenticated %}
+<p>
+  <h2>Welcome! You are not logged in. <a href="{% url 'login' %}">Log in</a> Or <a href="{% url 'user_create_view' %}">create an account</a></h2>
+</p>
+{% else %}
+      <p> <h3>Welcome, {{ request.user }}</h3></p>
+{% endif %}
+<br>
+
+
+    {% block content %}
+    {% endblock %}
+
+    </div>
+
+  </body>
+</html>
