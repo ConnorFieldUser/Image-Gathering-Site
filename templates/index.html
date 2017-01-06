@@ -2,7 +2,7 @@
 {% block content %}
 
 
-{% if self.request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
 {% for image in object_list %}
 
 <hr>
@@ -30,4 +30,6 @@
 <h3>Create an account to add some images to you home page.</h3>
 
 {% endif %}
+
+
 {% endblock %}
