@@ -24,7 +24,7 @@ class IndexView(ListView):
         if self.request.user.is_authenticated:
             return Image.objects.filter(created_user=self.request.user)
         else:
-            return 'no images'
+            return False
 
 
 # class IndexView(TemplateView):
