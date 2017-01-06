@@ -1,7 +1,7 @@
 # from django.shortcuts import render
 from django.contrib.auth.models import User
 
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView
@@ -16,8 +16,23 @@ from image_gallery.models import Image, Comment
 # Create your views here.
 
 
-class IndexView(TemplateView):
-        template_name = 'index.html'
+class IndexView(ListView):
+    model = Image
+    template_name = 'index.html'
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            return Image.objects.filter(created_user=self.request.user)
+        else:
+            return 'no images'
+
+
+# class IndexView(TemplateView):
+    # template_name = 'index.html'
+
+    # def get_queryset(self):
+    #     return Image.objects.all()
+    #     return Image.objects.filter(created_user=self.request.user)
 
 
 class UserCreateView(CreateView):

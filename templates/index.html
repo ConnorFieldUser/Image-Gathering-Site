@@ -1,6 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>DO NOT even think about styling until this work is done.</h3>
 
+{% if self.request.user.is_authenticated %}
+{% for image in object_list %}
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="{% url 'image_detail_view' image.id %}" class="thumbnail">
+      <img src="{{ MEDIA_URL }}{{ image.image_url }}" alt="Picture of {{ image.title }}"/>
+    </a>
+  </div>
+</div>
+
+  <a href="{% url 'image_update_view' image.id %}">Update</a>
+
+
+<div class="">
+  <h3 style="font-weight: bold;">{{ image.title }}</h3>
+</div>
+<hr>
+
+
+{% endfor %}
+{% else %}
+
+<h3>Create an account to add some images to you home page.</h3>
+
+{% endif %}
 {% endblock %}
